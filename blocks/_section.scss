@@ -1,0 +1,37 @@
+.section {
+    @include flex-around;
+
+
+    &__sorting {
+        @include font-basic;  
+        padding: var(--padding-section);
+       
+    }
+
+    & #tags {
+        border: var(--border-accent);
+        background-color: var(--background-transparent);
+        
+    }
+
+    &__search {
+        @include font-basic; 
+        border: none;
+        display: flex;
+        justify-content: center;
+        
+    }   
+
+    &__search__input {
+        border: none;
+        background-color: var(--background-transparent);
+        border-bottom: var(--border-accent);
+    }
+
+    &__search__button {
+        @include style-icons;
+        background-image: url('../images/icon-search.png');
+    }
+
+}
+
