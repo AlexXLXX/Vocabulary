@@ -1,0 +1,12 @@
+@import
+    'globals.scss',
+    'images.scss',
+    'normalize.scss',
+    'mixins.scss',
+    'media.scss',
+    'veriables.scss';
+
+@import
+    '../blocks/_header.scss',
+    '../blocks/_section.scss',
+    '../blocks/_table.scss';

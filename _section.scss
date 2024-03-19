@@ -1,0 +1,38 @@
+.section {
+    @include flex-center;
+    min-width: 430px;
+
+
+    &__sorting {
+        @include font-basic;  
+        padding: var(--padding-section);
+       
+    }
+
+    & #tags {
+        border: var(--border-accent);
+        background-color: var(--background-transparent);
+    }
+
+    &__search {
+        @include font-basic; 
+        border: none;
+        padding-bottom: 2px;
+        display: flex;
+        align-self: end;
+        
+    }   
+
+    &__search__input {
+        border: none;
+        background-color: var(--background-transparent);
+        border-bottom: var(--border-accent);
+    }
+
+    &__search__button {
+        @include style-icons;
+        background-image: url('../images/icon-search.png');
+    }
+
+}
+

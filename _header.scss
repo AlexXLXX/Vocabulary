@@ -1,0 +1,27 @@
+.header {
+    @include flex-center;
+    column-gap: 30px;
+    margin-left: 350px;
+    margin-block: 10px;
+    height: 200px;
+
+    & span {
+        @include font-basic; 
+        border: var(--border-accent);
+        padding: var(--padding-section);
+        border-radius: 10px;
+    }
+
+    & h1 {
+        font-family: var(--font-family-title);
+        font-size: 7rem;
+        padding: 15px;
+        border: var(--border);
+        border-radius: var(--border-radius-title);
+    }
+
+    & img {
+        min-width: 200px;
+        margin-right: 0;
+    }
+}

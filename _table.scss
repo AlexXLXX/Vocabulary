@@ -1,0 +1,94 @@
+.section-input {
+    margin-block: 15px;
+    padding: var(--padding-section);
+    display: grid;
+    gap: 10px 10px;
+
+    &__rus {
+        @include  style_section-input;
+        grid-column: 1/2;
+        
+
+        #text-rus {
+            @include style_section-input-label;
+        }
+    }
+    
+    &__esp {
+        @include  style_section-input;
+        grid-column: 2/3;
+        
+        #text-esp {
+            @include style_section-input-label;
+        }
+    }
+
+    &__tags-tables {
+        @include  style_section-input;
+        
+        #tags-tables {
+            @include style_section-input-label;
+            padding: 3px;   
+        }
+    }
+
+    &__add {
+        @include flex-center;
+        width:  380px;
+        height: 54px; 
+        background-color: var(--color-background_section-input);
+        border: var(--border_section-input);
+
+
+        &__input {
+            @include style-icons;
+            display: block;
+            background-image: url('../images/icons-add.png');  
+        }
+    }
+}
+
+
+
+
+.table {
+    padding: var(--padding-section);
+    min-width: 430px;
+   
+    
+    &__main {
+        width: 100%;
+        border: var(--border-accent);
+
+        th {
+            @include font-basic; 
+        }
+
+        td {
+            @include font-basic;
+            text-align: center;
+            border: var( --border-accent);
+        }
+
+        &__button {
+            @include style-icons;
+            background-image: url('../images/icon-delete.png');
+        }
+
+        &__ru {
+            width: 30%;
+        }
+
+        &__esp {
+            width: 30%;
+        }
+
+        &__sort {
+            width: 23%;
+        }
+
+        &__delete {
+            width: 10%;
+        }
+    }
+}
