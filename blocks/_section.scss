@@ -1,5 +1,6 @@
 .section {
-    @include flex-around;
+    @include flex-center;
+    min-width: 770px;
 
 
     &__sorting {
@@ -11,14 +12,14 @@
     & #tags {
         border: var(--border-accent);
         background-color: var(--background-transparent);
-        
     }
 
     &__search {
         @include font-basic; 
         border: none;
+        padding-bottom: 2px;
         display: flex;
-        justify-content: center;
+        align-self: end;
         
     }   
 

@@ -1,8 +1,7 @@
 @charset "UTF-8";
 body {
-  max-width: 768px;
-  height: auto;
   background-color: var(--color-background);
+  width: 100%;
 }
 
 img {
@@ -174,8 +173,8 @@ svg * {
   --font-family-title: "Comforter", sans-serif;
   --font-family-basic: "Alegreya", sans-serif;
   --font-family-words: "Bad Script", cursive, sans-serif;
-  --font-size:20px;
-  --font-size-basic: 1.5rem;
+  --font-size: 30px;
+  --font-size-basic: 5rem;
   --padding-section: 5px;
   --transition-duration: 0.2s;
 }
@@ -184,33 +183,40 @@ svg * {
   display: flex;
   justify-content: center;
   align-items: center;
-  -moz-column-gap: 50px;
-       column-gap: 50px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  margin-left: 350px;
+  margin-block: 10px;
   height: 200px;
 }
 .header span {
   font-family: var(--font-family-basic);
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   border: var(--border-accent);
   padding: var(--padding-section);
   border-radius: 10px;
 }
 .header h1 {
   font-family: var(--font-family-title);
-  font-size: 5rem;
+  font-size: 7rem;
   padding: 15px;
   border: var(--border);
   border-radius: var(--border-radius-title);
 }
+.header img {
+  min-width: 200px;
+  margin-right: 0;
+}
 
 .section {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  min-width: 770px;
 }
 .section__sorting {
   font-family: var(--font-family-basic);
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   padding: var(--padding-section);
 }
 .section #tags {
@@ -219,10 +225,11 @@ svg * {
 }
 .section__search {
   font-family: var(--font-family-basic);
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   border: none;
+  padding-bottom: 2px;
   display: flex;
-  justify-content: center;
+  align-self: end;
 }
 .section__search__input {
   border: none;
@@ -301,7 +308,7 @@ svg * {
 
 .table {
   padding: var(--padding-section);
-  margin: auto;
+  min-width: 770px;
 }
 .table__main {
   width: 100%;
@@ -309,11 +316,11 @@ svg * {
 }
 .table__main th {
   font-family: var(--font-family-basic);
-  font-size: 1.5rem;
+  font-size: 1.9rem;
 }
 .table__main td {
   font-family: var(--font-family-basic);
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   text-align: center;
   border: var(--border-accent);
 }

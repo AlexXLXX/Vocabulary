@@ -1,6 +1,8 @@
 .header {
     @include flex-center;
-    column-gap: 50px;
+    column-gap: 30px;
+    margin-left: 350px;
+    margin-block: 10px;
     height: 200px;
 
     & span {
@@ -12,9 +14,15 @@
 
     & h1 {
         font-family: var(--font-family-title);
-        font-size: 5rem;
+        font-size: 7rem;
         padding: 15px;
         border: var(--border);
         border-radius: var(--border-radius-title);
+    }
+
+    & img {
+        min-width: 200px;
+        margin-right: 0;
+        
     }
 }

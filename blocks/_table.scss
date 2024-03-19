@@ -53,7 +53,8 @@
 
 .table {
     padding: var(--padding-section);
-    margin: auto;
+    min-width: 770px;
+   
     
     &__main {
         width: 100%;
