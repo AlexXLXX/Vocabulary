@@ -14,6 +14,8 @@ countWords();
 
 btnAdd.addEventListener("click", addWord);
 table.addEventListener("click", deleteWord);
+listSortCat.addEventListener("change", filterWordsByCat);
+inputSearch.addEventListener("keyup", searchInTable);
 
 function addWord() {
   const rusWord = inputRus.value.trim().replace(/\s+/g, " ");
@@ -90,4 +92,77 @@ function renderTable(words) {
   `;
       table.insertAdjacentHTML("beforeend", tableTemplate);
     });
+}
+
+function filterWordsByCat(e) {
+  function renderFilterCat(category) {
+    const arrLS = getWordsToLocalStorage();
+    let sortArr = arrLS.filter((el) => el.category === category);
+    table.textContent = "";
+    renderTable(sortArr);
+  }
+
+  switch (e.target.value) {
+    case "Все":
+      updateTable();
+      break;
+
+    case "Числа и цифры":
+      renderFilterCat("Числа и цифры");
+      break;
+
+    case "Местоимения":
+      renderFilterCat("Местоимения");
+      break;
+
+    case "Предлоги и союзы":
+      renderFilterCat("Предлоги и союзы");
+      break;
+
+    case "Цвета и свойства":
+      renderFilterCat("Цвета и свойства");
+      break;
+
+    case "Время":
+      renderFilterCat("Время");
+      break;
+
+    case "Глаголы":
+      renderFilterCat("Глаголы");
+      break;
+
+    case "Человек":
+      renderFilterCat("Человек");
+      break;
+
+    case "Еда":
+      renderFilterCat("Еда");
+      break;
+
+    case "Дом и быт":
+      renderFilterCat("Дом и быт");
+      break;
+
+    case "Работа и увлечения":
+      renderFilterCat("Работа и увлечения");
+      break;
+
+    case "Путешествия":
+      renderFilterCat("Путешествия");
+      break;
+
+    case "Природа":
+      renderFilterCat("Природа");
+      break;
+  }
+}
+
+function searchInTable() {
+  let search = inputSearch.value.toUpperCase().trim();
+  let rows = document.querySelectorAll(".table__string");
+
+  for (let i = 0; i < rows.length; i++) {
+    let rowContent = rows[i].textContent.toUpperCase();
+    rows[i].style.display = rowContent.includes(search) ? "" : "none";
+  }
 }
