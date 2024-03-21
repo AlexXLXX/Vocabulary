@@ -1,8 +1,8 @@
 .section-input {
-    margin-block: 15px;
+    margin-block: 3.82vw;
     padding: var(--padding-section);
     display: grid;
-    gap: 10px 10px;
+    gap: 2.54vw 2.54vw;
 
     &__rus {
         @include  style_section-input;
@@ -53,8 +53,6 @@
 
 .table {
     padding: var(--padding-section);
-    min-width: 430px;
-   
     
     &__main {
         width: 100%;

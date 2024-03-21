@@ -1,7 +1,5 @@
 .section {
     @include flex-center;
-    min-width: 430px;
-
 
     &__sorting {
         @include font-basic;  

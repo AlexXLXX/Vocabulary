@@ -1,9 +1,9 @@
 .header {
     @include flex-center;
-    column-gap: 30px;
-    margin-left: 350px;
-    margin-block: 10px;
-    height: 200px;
+    column-gap: 7.63vw;
+    margin-left: 89.06vw;
+    margin-block: 2.54vw;
+    height:50.89vw;
 
     & span {
         @include font-basic; 
@@ -21,8 +21,7 @@
     }
 
     & img {
-        min-width: 200px;
+        min-width: 50.89vw;
         margin-right: 0;
-        
     }
 }
