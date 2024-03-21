@@ -2,6 +2,7 @@
 body {
   background-color: var(--color-background);
   width: 100%;
+  height: 100%;
 }
 
 img {
@@ -159,6 +160,11 @@ svg * {
     scroll-behavior: auto !important;
   }
 }
+@media screen and (max-width: 700px) {
+  html {
+    overflow-x: hidden;
+  }
+}
 :root {
   --color-black:#000000;
   --color-dark:#bd0213;
@@ -183,11 +189,12 @@ svg * {
   display: flex;
   justify-content: center;
   align-items: center;
-  -moz-column-gap: 30px;
-       column-gap: 30px;
-  margin-left: 350px;
-  margin-block: 10px;
-  height: 200px;
+  width: 370px;
+  -moz-column-gap: 7.63vw;
+       column-gap: 7.63vw;
+  margin-left: 53.44vw;
+  margin-block: 2.54vw;
+  height: 50.89vw;
 }
 .header span {
   font-family: var(--font-family-basic);
@@ -204,7 +211,7 @@ svg * {
   border-radius: var(--border-radius-title);
 }
 .header img {
-  min-width: 200px;
+  min-width: 50.89vw;
   margin-right: 0;
 }
 
@@ -212,7 +219,9 @@ svg * {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 770px;
+  margin-left: 91.6vw;
+  -moz-column-gap: 17.81vw;
+       column-gap: 17.81vw;
 }
 .section__sorting {
   font-family: var(--font-family-basic);
@@ -246,10 +255,10 @@ svg * {
 }
 
 .section-input {
-  margin-block: 15px;
+  margin-block: 3.82vw;
   padding: var(--padding-section);
   display: grid;
-  gap: 10px 10px;
+  gap: 2.54vw 2.54vw;
 }
 .section-input__rus {
   font-family: var(--font-family-basic);
@@ -308,10 +317,9 @@ svg * {
 
 .table {
   padding: var(--padding-section);
-  min-width: 770px;
 }
 .table__main {
-  width: 100%;
+  width: 193.38vw;
   border: var(--border-accent);
 }
 .table__main th {

@@ -1,5 +1,7 @@
 .section {
     @include flex-center;
+    margin-left: 91.60vw;
+    column-gap: 17.81vw;
 
     &__sorting {
         @include font-basic;  
