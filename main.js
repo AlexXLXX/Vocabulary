@@ -20,6 +20,7 @@ table.addEventListener("dblclick", editWordText);
 table.addEventListener("touchstart", editWordTextByDobleTouch);
 table.addEventListener("dragenter", (e) => e.preventDefault());
 table.addEventListener(`dragover`, moveDragElement);
+table.addEventListener(`touchmove`, moveDragElement);
 
 function addWord() {
   const rusWord = inputRus.value.trim().replace(/\s+/g, " ");
@@ -233,17 +234,21 @@ function editWordTextByDobleTouch(e) {
 function activationDrag() {
   const arrRows = [...document.querySelectorAll(".table__string")];
   arrRows.forEach((item) => {
-    item.addEventListener("dragstart", () => {
+    item.addEventListener("dragstart", addClass);
+    item.addEventListener("touchstart", addClass);
+    function addClass() {
       setTimeout(() => {
         item.classList.add("dragging");
       }, 0);
-    });
-    item.addEventListener("dragend", () => {
+    }
+    item.addEventListener("dragend", removeClass);
+    item.addEventListener("touchend", removeClass);
+    function removeClass() {
       item.classList.remove("dragging");
       if (arrRows.length > 1) {
         savePositionRow();
       }
-    });
+    }
   });
 }
 
