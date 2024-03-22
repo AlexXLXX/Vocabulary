@@ -16,6 +16,10 @@ btnAdd.addEventListener("click", addWord);
 table.addEventListener("click", deleteWord);
 listSortCat.addEventListener("change", filterWordsByCat);
 inputSearch.addEventListener("keyup", searchInTable);
+table.addEventListener("dblclick", editWordText);
+table.addEventListener("touchstart", editWordTextByDobleTouch);
+table.addEventListener("dragenter", (e) => e.preventDefault());
+table.addEventListener(`dragover`, moveDragElement);
 
 function addWord() {
   const rusWord = inputRus.value.trim().replace(/\s+/g, " ");
@@ -71,7 +75,6 @@ function updateTable() {
   table.textContent = "";
   const arrLS = getWordsToLocalStorage();
   renderTable(arrLS);
-  console.log(arrLS);
 }
 
 function renderTable(words) {
@@ -82,16 +85,17 @@ function renderTable(words) {
       const tableTemplate = `
       <tr class="table__string" data-table-string-id="${
         element.id
-      }" dragable="true">
+      }" draggable="true">
       <td>${index + 1}</td>
-      <td>${element.rus}</td>
-      <td>${element.esp}</td>
+      <td data-action="rus">${element.rus}</td>
+      <td data-action="esp">${element.esp}</td>
       <td>${element.category}</td>
       <td><input type="button" class="table__main__button" data-action="delete"></td>
   </tr>
   `;
       table.insertAdjacentHTML("beforeend", tableTemplate);
     });
+  activationDrag();
 }
 
 function filterWordsByCat(e) {
@@ -165,4 +169,116 @@ function searchInTable() {
     let rowContent = rows[i].textContent.toUpperCase();
     rows[i].style.display = rowContent.includes(search) ? "" : "none";
   }
+}
+
+function editWordText(e) {
+  const tableBlock = e.target;
+  const parentNode = e.target.closest(".table__string");
+  const id = Number(parentNode.dataset.tableStringId);
+  const arrLS = getWordsToLocalStorage();
+  const stringElem = arrLS.find((el) => el.id === id);
+
+  if (e.target.dataset.action === "rus" || e.target.dataset.action === "esp") {
+    const newInput = document.createElement("input");
+    newInput.className = "newInput";
+    tableBlock.append(newInput);
+    newInput.focus();
+    newInput.value = tableBlock.textContent;
+    tableBlock.childNodes[0].remove();
+
+    function save() {
+      tableBlock.textContent = newInput.value;
+      newInput.remove();
+      stringElem.rus = parentNode.cells[1].textContent;
+      stringElem.esp = parentNode.cells[2].textContent;
+      setWordsToLocalStorage(arrLS);
+
+      return;
+    }
+
+    newInput.addEventListener("blur", function () {
+      if (newInput.value === "" || newInput.value.trim() === 0) {
+        newInput.remove();
+        tableBlock.textContent = "???";
+        return;
+      }
+      save();
+    });
+
+    newInput.addEventListener("keydown", function (e) {
+      if (e.keyCode === 13 || e.keyCode == 27) {
+        newInput.blur();
+      }
+    });
+  }
+
+  console.log(stringElem);
+}
+
+function editWordTextByDobleTouch(e) {
+  let expired;
+  if (e.touches.length === 1) {
+    if (!expired) {
+      expired = e.timeStamp + 400;
+    } else if (e.timeStamp <= expired) {
+      e.preventDefault();
+      editWordText();
+      expired = null;
+    } else {
+      expired = e.timeStamp + 400;
+    }
+  }
+}
+
+function activationDrag() {
+  const arrRows = [...document.querySelectorAll(".table__string")];
+  arrRows.forEach((item) => {
+    item.addEventListener("dragstart", () => {
+      setTimeout(() => {
+        item.classList.add("dragging");
+      }, 0);
+    });
+    item.addEventListener("dragend", () => {
+      item.classList.remove("dragging");
+      if (arrRows.length > 1) {
+        savePositionRow();
+      }
+    });
+  });
+}
+
+function savePositionRow() {
+  const arrLS = getWordsToLocalStorage();
+  const arrRows = [...document.querySelectorAll(".table__string")];
+
+  arrRows.forEach((item, i) => {
+    const id = Number(item.dataset.tableStringId);
+    const index = arrLS.findIndex((value) => value.id === id);
+    if (index !== -1) {
+      arrLS[index].position = i;
+    }
+  });
+  setWordsToLocalStorage(arrLS);
+  updateTable();
+}
+
+function moveDragElement(e) {
+  e.preventDefault();
+
+  const activeElement = table.querySelector(`.dragging`);
+  const currentElement = e.target.closest(".table__string");
+  const isMoveable =
+    activeElement !== currentElement &&
+    currentElement.classList.contains(`table__string`);
+
+  if (!isMoveable) {
+    return;
+  }
+
+  const nextElement =
+    currentElement === activeElement.nextElementSibling
+      ? currentElement.nextElementSibling
+      : currentElement;
+
+  table.insertBefore(activeElement, nextElement);
 }
