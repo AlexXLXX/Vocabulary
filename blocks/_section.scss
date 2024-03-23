@@ -1,13 +1,11 @@
 .section {
-    @include flex-center;
-    width: 370px;
-    margin-left: 53.44vw;
-    column-gap: 7.63vw;
+    @include flex-around;
+    width: 383px;
+    margin-inline: 5px;
+  
     
-    &__sorting {
-        @include font-basic;  
-        padding: var(--padding-section);
-       
+    &__sorting { 
+        @include font-basic;
     }
 
     & #tags {
@@ -16,7 +14,8 @@
     }
 
     &__search {
-        @include font-basic; 
+        @include font-basic;
+
         border: none;
         padding-bottom: 2px;
         display: flex;

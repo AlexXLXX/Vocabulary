@@ -1,13 +1,11 @@
 @charset "UTF-8";
 body {
   background-color: var(--color-background);
-  width: 100%;
-  height: 100%;
 }
 
 img {
-  width: 130px;
-  height: auto;
+  width: 25%;
+  margin-right: 0;
 }
 
 /**
@@ -160,11 +158,6 @@ svg * {
     scroll-behavior: auto !important;
   }
 }
-@media screen and (max-width: 700px) {
-  html {
-    overflow-x: hidden;
-  }
-}
 :root {
   --color-black:#000000;
   --color-dark:#bd0213;
@@ -179,54 +172,44 @@ svg * {
   --font-family-title: "Comforter", sans-serif;
   --font-family-basic: "Alegreya", sans-serif;
   --font-family-words: "Bad Script", cursive, sans-serif;
-  --font-size: 30px;
-  --font-size-basic: 5rem;
-  --padding-section: 5px;
+  --font-size: 16px;
+  --padding-section: 5x;
   --transition-duration: 0.2s;
 }
 
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  width: 370px;
-  -moz-column-gap: 7.63vw;
-       column-gap: 7.63vw;
-  margin-left: 53.44vw;
-  margin-block: 2.54vw;
-  height: 50.89vw;
+  gap: 0.7vw;
+  width: 393px;
+  height: 34.88vw;
 }
 .header span {
   font-family: var(--font-family-basic);
-  font-size: 1.9rem;
+  font-size: 1.3rem;
+  text-align: center;
   border: var(--border-accent);
-  padding: var(--padding-section);
   border-radius: 10px;
 }
 .header h1 {
   font-family: var(--font-family-title);
-  font-size: 7rem;
+  font-size: 3rem;
   padding: 15px;
   border: var(--border);
   border-radius: var(--border-radius-title);
 }
-.header img {
-  min-width: 50.89vw;
-  margin-right: 0;
-}
 
 .section {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  margin-left: 91.6vw;
-  -moz-column-gap: 17.81vw;
-       column-gap: 17.81vw;
+  width: 383px;
+  margin-inline: 5px;
 }
 .section__sorting {
   font-family: var(--font-family-basic);
-  font-size: 1.9rem;
-  padding: var(--padding-section);
+  font-size: 0.95rem;
 }
 .section #tags {
   border: var(--border-accent);
@@ -234,7 +217,7 @@ svg * {
 }
 .section__search {
   font-family: var(--font-family-basic);
-  font-size: 1.9rem;
+  font-size: 0.95rem;
   border: none;
   padding-bottom: 2px;
   display: flex;
@@ -249,48 +232,47 @@ svg * {
   background-size: cover;
   background-color: var(--background-transparent);
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-image: url("../images/icon-search.png");
 }
 
 .section-input {
   margin-block: 3.82vw;
-  padding: var(--padding-section);
   display: grid;
-  gap: 2.54vw 2.54vw;
+  gap: 0.47vw 0.47vw;
 }
 .section-input__rus {
   font-family: var(--font-family-basic);
-  font-size: 1.5rem;
+  font-size: 0.95rem;
   border: var(--border_section-input);
   grid-column: 1/2;
 }
 .section-input__rus #text-rus {
-  width: 376px;
+  width: 100%;
   height: 50px;
   background-color: var(--color-background_section-input);
   border: none;
 }
 .section-input__esp {
   font-family: var(--font-family-basic);
-  font-size: 1.5rem;
+  font-size: 0.95rem;
   border: var(--border_section-input);
   grid-column: 2/3;
 }
 .section-input__esp #text-esp {
-  width: 376px;
+  width: 100%;
   height: 50px;
   background-color: var(--color-background_section-input);
   border: none;
 }
 .section-input__tags-tables {
   font-family: var(--font-family-basic);
-  font-size: 1.5rem;
+  font-size: 0.95rem;
   border: var(--border_section-input);
 }
 .section-input__tags-tables #tags-tables {
-  width: 376px;
+  width: 100%;
   height: 50px;
   background-color: var(--color-background_section-input);
   border: none;
@@ -300,7 +282,7 @@ svg * {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 380px;
+  width: 100%;
   height: 54px;
   background-color: var(--color-background_section-input);
   border: var(--border_section-input);
@@ -315,20 +297,17 @@ svg * {
   background-image: url("../images/icons-add.png");
 }
 
-.table {
-  padding: var(--padding-section);
-}
 .table__main {
-  width: 193.38vw;
+  width: 100%;
   border: var(--border-accent);
 }
 .table__main th {
   font-family: var(--font-family-basic);
-  font-size: 1.9rem;
+  font-size: 0.95rem;
 }
 .table__main td {
   font-family: var(--font-family-basic);
-  font-size: 1.9rem;
+  font-size: 0.95rem;
   text-align: center;
   border: var(--border-accent);
 }
@@ -336,8 +315,8 @@ svg * {
   background-size: cover;
   background-color: var(--background-transparent);
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-image: url("../images/icon-delete.png");
 }
 .table__main__ru {

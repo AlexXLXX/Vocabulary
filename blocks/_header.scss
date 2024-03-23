@@ -1,28 +1,22 @@
 .header {
-    @include flex-center;
-    width: 370px;
-    column-gap: 7.63vw;
-    margin-left: 53.44vw;
-    margin-block: 2.54vw;
-    height:50.89vw;
+    @include flex-around;
+    gap: 0.70vw;
+    width: 393px;
+    height: 34.88vw;
 
     & span {
-        @include font-basic; 
+        @include font-basic-header; 
+        text-align: center;
         border: var(--border-accent);
-        padding: var(--padding-section);
         border-radius: 10px;
     }
 
     & h1 {
         font-family: var(--font-family-title);
-        font-size: 7rem;
+        font-size: 3rem;
         padding: 15px;
         border: var(--border);
         border-radius: var(--border-radius-title);
     }
 
-    & img {
-        min-width: 50.89vw;
-        margin-right: 0;
-    }
 }

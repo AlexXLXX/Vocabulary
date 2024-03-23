@@ -1,16 +1,14 @@
 .section-input {
     margin-block: 3.82vw;
-    padding: var(--padding-section);
     display: grid;
-    gap: 2.54vw 2.54vw;
+    gap: 0.47vw 0.47vw;
 
     &__rus {
         @include  style_section-input;
         grid-column: 1/2;
-        
 
         #text-rus {
-            @include style_section-input-label;
+            @include style_section-input-label; 
         }
     }
     
@@ -34,14 +32,18 @@
 
     &__add {
         @include flex-center;
-        width:  380px;
+        width:  100%;
         height: 54px; 
         background-color: var(--color-background_section-input);
         border: var(--border_section-input);
 
 
         &__input {
-            @include style-icons;
+            background-size: cover;
+            background-color: var(--background-transparent);
+            border: none;
+            width: 50px;
+            height: 50px;
             display: block;
             background-image: url('../images/icons-add.png');  
         }
@@ -52,10 +54,9 @@
 
 
 .table {
-    padding: var(--padding-section);
-    
+
     &__main {
-        width: 193.38vw;
+        width: 100%;
         border: var(--border-accent);
 
         th {

@@ -10,19 +10,24 @@
     align-items: center;
 }
 
+@mixin font-basic-header {
+    font-family: var(--font-family-basic);
+    font-size: 1.3rem; 
+}
+
 @mixin font-basic {
     font-family: var(--font-family-basic);
-    font-size: 1.9rem; 
+    font-size: 0.95rem; 
 }
 
 @mixin style_section-input {
     font-family: var(--font-family-basic);
-    font-size: 1.5rem; 
+    font-size: 0.95rem; 
     border: var(--border_section-input);
 }
 
 @mixin style_section-input-label {
-    width:  376px;
+    width:  100%;
     height: 50px; 
     background-color: var(--color-background_section-input);
     border: none;
@@ -32,7 +37,7 @@
     background-size: cover;
     background-color: var(--background-transparent);
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
