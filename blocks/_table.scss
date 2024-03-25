@@ -67,6 +67,7 @@
             @include font-basic;
             text-align: center;
             border: var( --border-accent);
+            position: relative;
         }
 
         &__button {
@@ -90,4 +91,20 @@
             width: 10%;
         }
     }
+}
+
+.newInput {
+    font: inherit;
+    outline: 0;
+    padding: 0;
+    text-align: center;
+    border: 1px solid red;
+    width: 100%;
+    height: auto;
+    background-color: var(--color-background_section-input);
+    border: var(--border_section-input);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
 }
