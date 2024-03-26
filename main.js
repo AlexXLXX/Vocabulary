@@ -29,7 +29,7 @@ function addWord() {
   if (rusWord === "" || espWord === "") return;
 
   const words = getWordsToLocalStorage();
-  words.push({
+  words.unshift({
     id: Number(new Date()),
     rus: rusWord,
     esp: espWord,
@@ -39,6 +39,8 @@ function addWord() {
 
   inputRus.value = "";
   inputEsp.value = "";
+  listPickCat.value = "Все";
+  listSortCat.value = "Все";
 
   setWordsToLocalStorage(words);
   updateTable();
@@ -84,9 +86,7 @@ function renderTable(words) {
     .sort((a, b) => a.position - b.position)
     .forEach((element, index) => {
       const tableTemplate = `
-      <tr class="table__string" data-table-string-id="${
-        element.id
-      }" draggable="true">
+      <tr class="table__string" data-table-string-id="${element.id}">
       <td>${index + 1}</td>
       <td data-action="rus">${element.rus}</td>
       <td data-action="esp">${element.esp}</td>
@@ -231,24 +231,89 @@ function editWordTextByDobleTouch(e) {
   }
 }
 
+// function activationDrag() {
+//   const arrRows = [...document.querySelectorAll(".table__string")];
+//   arrRows.forEach((item) => {
+//     setTimeout(() => {
+//       item.draggable = true;
+//       item.addEventListener("dragstart", addClass);
+//       function addClass() {
+//         setTimeout(() => {
+//           item.classList.add("dragging");
+//         }, 0);
+//       }
+//     }, 1000);
+
+//     item.addEventListener("dragend", removeClass);
+//     function removeClass() {
+//       item.draggable = false;
+//       item.classList.remove("dragging");
+//       if (arrRows.length > 1) {
+//         savePositionRow();
+//       }
+//     }
+//   });
+// }
+
+// function savePositionRow() {
+//   const arrLS = getWordsToLocalStorage();
+//   const arrRows = [...document.querySelectorAll(".table__string")];
+
+//   arrRows.forEach((item, i) => {
+//     const id = Number(item.dataset.tableStringId);
+//     const index = arrLS.findIndex((value) => value.id === id);
+//     if (index !== -1) {
+//       arrLS[index].position = i;
+//     }
+//   });
+//   setWordsToLocalStorage(arrLS);
+//   updateTable();
+// }
+
+// function moveDragElement(e) {
+//   e.preventDefault();
+
+//   const activeElement = table.querySelector(`.dragging`);
+//   const currentElement = e.target.closest(".table__string");
+//   const isMoveable =
+//     activeElement !== currentElement &&
+//     currentElement.classList.contains(`table__string`);
+
+//   if (!isMoveable) {
+//     return;
+//   }
+
+//   const nextElement =
+//     currentElement === activeElement.nextElementSibling
+//       ? currentElement.nextElementSibling
+//       : currentElement;
+
+//   table.insertBefore(activeElement, nextElement);
+// }
+
 function activationDrag() {
   const arrRows = [...document.querySelectorAll(".table__string")];
   arrRows.forEach((item) => {
-    item.addEventListener("dragstart", addClass);
-    // item.addEventListener("touchstart", addClass);
-    function addClass() {
-      setTimeout(() => {
-        item.classList.add("dragging");
-      }, 0);
-    }
-    item.addEventListener("dragend", removeClass);
-    // item.addEventListener("touchend", removeClass);
-    function removeClass() {
+    let pressTimer;
+    item.addEventListener("touchstart", function () {
+      pressTimer = setTimeout(() => {
+        item.draggable = true;
+        item.addEventListener("dragstart", addClass);
+        function addClass() {
+          setTimeout(() => {
+            item.classList.add("dragging");
+          }, 0);
+        }
+      }, 1000);
+    });
+    item.addEventListener("touchend", function () {
+      clearTimeout(pressTimer);
+      item.draggable = false;
       item.classList.remove("dragging");
       if (arrRows.length > 1) {
         savePositionRow();
       }
-    }
+    });
   });
 }
 
@@ -270,11 +335,11 @@ function savePositionRow() {
 function moveDragElement(e) {
   e.preventDefault();
 
-  const activeElement = table.querySelector(`.dragging`);
+  const activeElement = table.querySelector(".dragging");
   const currentElement = e.target.closest(".table__string");
   const isMoveable =
     activeElement !== currentElement &&
-    currentElement.classList.contains(`table__string`);
+    currentElement.classList.contains(".table__string");
 
   if (!isMoveable) {
     return;
@@ -287,4 +352,3 @@ function moveDragElement(e) {
 
   table.insertBefore(activeElement, nextElement);
 }
-
