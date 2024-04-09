@@ -1,0 +1,361 @@
+@charset "UTF-8";
+body {
+  background-color: var(--color-background);
+}
+
+img {
+  width: 25%;
+  margin-right: 0;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями
+ */
+img {
+  max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Плавный скролл
+   */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --color-black:#000000;
+  --color-dark:#bd0213;
+  --color-accent: rgb(219, 169, 17);
+  --color-background: #cfcfcf;
+  --color-background_section-input:#bd02132b;
+  --background-transparent: transparent;
+  --border: 2px solid var(--color-dark);
+  --border-accent: 2px solid var(--color-accent);
+  --border_section-input: 2px solid var(--color-dark);
+  --border-radius-title: 74% 26% 78% 22% / 30% 68% 32% 70%;
+  --font-family-title: "Comforter", sans-serif;
+  --font-family-basic: "Alegreya", sans-serif;
+  --font-family-words: "Bad Script", cursive, sans-serif;
+  --font-size: 16px;
+  --padding-section: 5x;
+  --transition-duration: 0.2s;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.7vw;
+  width: 393px;
+  height: 34.88vw;
+}
+.header span {
+  font-family: var(--font-family-basic);
+  font-size: 1.3rem;
+  text-align: center;
+  border: var(--border-accent);
+  border-radius: 10px;
+}
+.header h1 {
+  font-family: var(--font-family-title);
+  font-size: 3rem;
+  padding: 15px;
+  border: var(--border);
+  border-radius: var(--border-radius-title);
+}
+
+.section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 383px;
+  margin-inline: 5px;
+}
+.section__sorting {
+  font-family: var(--font-family-basic);
+  font-size: 0.95rem;
+}
+.section #tags {
+  border: var(--border-accent);
+  background-color: var(--background-transparent);
+}
+.section__search {
+  font-family: var(--font-family-basic);
+  font-size: 0.95rem;
+  border: none;
+  padding-bottom: 2px;
+  display: flex;
+  align-self: end;
+}
+.section__search__input {
+  border: none;
+  background-color: var(--background-transparent);
+  border-bottom: var(--border-accent);
+}
+.section__search__button {
+  background-size: cover;
+  background-color: var(--background-transparent);
+  border: none;
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/icon-search.png");
+}
+
+.section-input {
+  margin-block: 3.82vw;
+  display: grid;
+  gap: 0.47vw 0.47vw;
+}
+.section-input__rus {
+  font-family: var(--font-family-basic);
+  font-size: 0.95rem;
+  border: var(--border_section-input);
+  grid-column: 1/2;
+}
+.section-input__rus #text-rus {
+  width: 100%;
+  height: 50px;
+  background-color: var(--color-background_section-input);
+  border: none;
+}
+.section-input__esp {
+  font-family: var(--font-family-basic);
+  font-size: 0.95rem;
+  border: var(--border_section-input);
+  grid-column: 2/3;
+}
+.section-input__esp #text-esp {
+  width: 100%;
+  height: 50px;
+  background-color: var(--color-background_section-input);
+  border: none;
+}
+.section-input__tags-tables {
+  font-family: var(--font-family-basic);
+  font-size: 0.95rem;
+  border: var(--border_section-input);
+}
+.section-input__tags-tables #tags-tables {
+  width: 100%;
+  height: 50px;
+  background-color: var(--color-background_section-input);
+  border: none;
+  padding: 3px;
+}
+.section-input__add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 54px;
+  background-color: var(--color-background_section-input);
+  border: var(--border_section-input);
+}
+.section-input__add__input {
+  background-size: cover;
+  background-color: var(--background-transparent);
+  border: none;
+  width: 50px;
+  height: 50px;
+  display: block;
+  background-image: url("../images/icons-add.png");
+}
+
+.table__main {
+  width: 100%;
+  border: var(--border-accent);
+  touch-action: -branch;
+  user-select: none;
+}
+.table__main th {
+  font-family: var(--font-family-basic);
+  font-size: 0.95rem;
+}
+.table__main td {
+  font-family: var(--font-family-basic);
+  font-size: 0.95rem;
+  text-align: center;
+  border: var(--border-accent);
+  position: relative;
+}
+.table__main__button {
+  background-size: cover;
+  background-color: var(--background-transparent);
+  border: none;
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/icon-delete.png");
+}
+.table__main__ru {
+  width: 30%;
+}
+.table__main__esp {
+  width: 30%;
+}
+.table__main__sort {
+  width: 23%;
+}
+.table__main__delete {
+  width: 10%;
+}
+
+.newInput {
+  font: inherit;
+  outline: 0;
+  padding: 0;
+  text-align: center;
+  border: 1px solid red;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-background_section-input);
+  border: var(--border_section-input);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.dragging {
+  opacity: 1;
+  background-color: var(--color-background_section-input);
+  border: var(--border_section-input);
+  border: 1px solid red;
+}
+
+/*# sourceMappingURL=styles.css.map */

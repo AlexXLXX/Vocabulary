@@ -1,0 +1,26 @@
+:root {
+    
+    --color-black:#000000;
+    --color-dark:#bd0213;
+    --color-accent: rgb(219, 169, 17);
+    --color-background: #cfcfcf;
+    --color-background_section-input:#bd02132b;
+
+    --background-transparent: transparent;
+
+    --border: 2px solid var(--color-dark);
+    --border-accent: 2px solid var(--color-accent);
+    --border_section-input: 2px solid var(--color-dark);
+    
+    --border-radius-title: 74% 26% 78% 22% / 30% 68% 32% 70%;
+    
+    --font-family-title: 'Comforter', sans-serif;
+    --font-family-basic: 'Alegreya', sans-serif;
+    --font-family-words: 'Bad Script', cursive, sans-serif;
+
+    --font-size: 16px;
+
+    --padding-section: 5x;
+
+    --transition-duration: 0.2s;
+}

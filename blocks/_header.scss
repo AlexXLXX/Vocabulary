@@ -1,0 +1,24 @@
+.header {
+    @include flex-around;
+    gap: 0.70vw;
+    width: 393px;
+    height: 34.88vw;
+
+ 
+
+    & span {
+        @include font-basic-header; 
+        text-align: center;
+        border: var(--border-accent);
+        border-radius: 10px;
+    }
+
+    & h1 {
+        font-family: var(--font-family-title);
+        font-size: 3rem;
+        padding: 15px;
+        border: var(--border);
+        border-radius: var(--border-radius-title);
+    }
+
+}

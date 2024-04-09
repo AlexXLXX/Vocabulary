@@ -1,0 +1,43 @@
+@mixin flex-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin font-basic-header {
+    font-family: var(--font-family-basic);
+    font-size: 1.3rem; 
+}
+
+@mixin font-basic {
+    font-family: var(--font-family-basic);
+    font-size: 0.95rem; 
+}
+
+@mixin style_section-input {
+    font-family: var(--font-family-basic);
+    font-size: 0.95rem; 
+    border: var(--border_section-input);
+}
+
+@mixin style_section-input-label {
+    width:  100%;
+    height: 50px; 
+    background-color: var(--color-background_section-input);
+    border: none;
+}
+
+@mixin style-icons {
+    background-size: cover;
+    background-color: var(--background-transparent);
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+

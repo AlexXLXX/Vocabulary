@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru,es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA_Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.scss">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comforter&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Comforter&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <header class="header"> 
+
+        <span id="section__word-counter">
+            Выученные <br> слова: 0
+        </span>
+
+        <h1>Словарь</h1>
+
+        <img src="images\spain_logo.png"  alt="Флаг Испании" loading="lazy">
+
+    </header>
+
+    <div class="section">
+        <div class="section__sorting">
+            <label for="tags">Сортировка слов:</label>
+            <select name="cars" id="tags">
+                <option value="Все">Все</option>
+                <option value="Числа и цифры">Числа и цифры</option>
+                <option value="Местоимения">Местоимения</option>
+                <option value="Предлоги и союзы">Предлоги и союзы</option>
+                <option value="Цвета и свойства">Цвета и свойства</option>
+                <option value="Время">Время</option>
+                <option value="Глаголы">Глаголы</option>
+                <option value="Человек">Человек</option>
+                <option value="Еда">Еда</option>
+                <option value="Дом и быт">Дом и быт</option>
+                <option value="Работа и увлечения">Работа и увлечения</option>
+                <option value="Путешествия">Путешествия</option>
+                <option value="Природа">Природа</option>
+            </select>
+        </div>
+
+        <form class="section__search" method="get">
+            <input class="section__search__input" placeholder="Поиск словa" type="text" inputmode="text">
+            <button class="section__search__button" type="submit"></button>
+          </form>
+    </div>
+
+
+    <div class="section-input">
+
+        <div class="section-input__rus">
+            <label for="text-rus"></label>
+            <input type="text" inputmode="text" id="text-rus" placeholder="русский">
+        </div>
+        
+        <div class="section-input__esp">
+            <label for="text-esp"></label>
+            <input type="text" inputmode="email" id="text-esp" placeholder="испанский">
+        </div>
+
+        <div class="section-input__tags-tables">
+            <label for="tags-tables"></label>
+                <select name="cars" id="tags-tables">
+                    <option value="Все">Все</option>
+                    <option value="Числа и цифры">Числа и цифры</option>
+                    <option value="Местоимения">Местоимения</option>
+                    <option value="Предлоги и союзы">Предлоги и союзы</option>
+                    <option value="Цвета и свойства">Цвета и свойства</option>
+                    <option value="Время">Время</option>
+                    <option value="Глаголы">Глаголы</option>
+                    <option value="Человек">Человек</option>
+                    <option value="Еда">Еда</option>
+                    <option value="Дом и быт">Дом и быт</option>
+                    <option value="Работа и увлечения">Работа и увлечения</option>
+                    <option value="Путешествия">Путешествия</option>
+                    <option value="Природа">Природа</option>
+                </select>
+            </div>
+
+            <div class="section-input__add">
+                <button class="section-input__add__input" type="button"></button>
+            </div>
+
+    </div>
+
+    <div class="table">
+        <table class="table__main">
+            <thead>
+                <tr>
+                    <th class="table__main__number">№</th>
+                    <th class="table__main__ru">Русский</th>
+                    <th class="table__main__esp">Испанский</th>
+                    <th class="table__main__sort">Категория</th>
+                    <th class="table__main__delete">Удалить</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">   
+            </tbody> 
+        </table>
+    </div>
+    </div>
+
+    <script src="Sortable.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
